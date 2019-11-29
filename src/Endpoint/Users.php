@@ -28,7 +28,11 @@ class Users implements UsersInterface
     public function ping(): Response
     {
         /** @var HttpResponse $response */
-        $response = $this->httpClient->post('ping');
+        $response = $this->httpClient->post('', [
+            'query' => [
+                'method' => 'ping'
+            ]
+        ]);
 
         /** @var Response $response */
         $response = Response::fromResponse($response);

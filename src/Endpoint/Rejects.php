@@ -34,7 +34,10 @@ class Rejects implements RejectsInterface
     public function add(RejectAdd $reject): Response
     {
         /** @var HttpResponse $response */
-        $response = $this->httpClient->post('rejectsAdd', [
+        $response = $this->httpClient->post('', [
+            'query' => [
+                'method' => 'rejectsAdd'
+            ],
             'form_data' => $reject->toArray()
         ]);
 
@@ -53,7 +56,10 @@ class Rejects implements RejectsInterface
     public function delete(RejectDelete $reject): Response
     {
         /** @var HttpResponse $response */
-        $response = $this->httpClient->post('rejectsDelete', [
+        $response = $this->httpClient->post('', [
+            'query' => [
+                'method' => 'rejectsDelete'
+            ],
             'form_data' => $reject->toArray()
         ]);
 
@@ -72,7 +78,10 @@ class Rejects implements RejectsInterface
     public function list(?RejectList $reject = null): RejectListResponse
     {
         /** @var HttpResponse $response */
-        $response = $this->httpClient->post('rejectsList', [
+        $response = $this->httpClient->post('', [
+            'query' => [
+                'method' => 'rejectsList'
+            ],
             'form_data' => !empty($reject) ? $reject->toArray() : []
         ]);
 
