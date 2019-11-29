@@ -32,7 +32,7 @@ class Messages implements MessagesInterface
     public function send(Message $message): SendMessageResponse
     {
         /** @var HttpResponse $response */
-        $response = $this->httpClient->post('messagessend', [
+        $response = $this->httpClient->post('messagesSend', [
             'form_data' => $message->toArray()
         ]);
 
@@ -51,7 +51,7 @@ class Messages implements MessagesInterface
     public function sendRaw(RawMessage $message): SendMessageResponse
     {
         /** @var HttpResponse $response */
-        $response = $this->httpClient->post('messagessendraw', [
+        $response = $this->httpClient->post('messagesSendRaw', [
             'form_data' => $message->toArray()
         ]);
 
