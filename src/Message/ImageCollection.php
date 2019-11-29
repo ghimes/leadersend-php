@@ -21,7 +21,7 @@ class ImageCollection
                 throw new \Exception(sprintf(
                     '%s expects an array of %s objects but one of the items is %s',
                     static::class,
-	                Image::class,
+                    Image::class,
                     !is_object($image) ? gettype($image) : get_class($image)
                 ));
             }

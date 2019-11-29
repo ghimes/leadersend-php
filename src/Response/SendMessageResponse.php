@@ -17,13 +17,13 @@ class SendMessageResponse extends Response
         return isset($response['status']) && $response['status'] === 'sent';
     }
 
-	/**
-	 * @return bool
-	 */
-    public function isRejected(): bool 
+    /**
+     * @return bool
+     */
+    public function isRejected(): bool
     {
-	    $response = $this->getResponseData()[0] ?? [];
-	    return isset($response['status']) && $response['status'] === 'rejected';
+        $response = $this->getResponseData()[0] ?? [];
+        return isset($response['status']) && $response['status'] === 'rejected';
     }
     
     /**

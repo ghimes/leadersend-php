@@ -21,7 +21,7 @@ class AttachmentCollection
                 throw new \Exception(sprintf(
                     '%s expects an array of %s objects but one of the items is %s',
                     static::class,
-	                Attachment::class,
+                    Attachment::class,
                     !is_object($attachment) ? gettype($attachment) : get_class($attachment)
                 ));
             }
