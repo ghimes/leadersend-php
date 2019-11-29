@@ -70,7 +70,15 @@ $example = new class {
         /** @var SendMessageResponse $response */
         $response = $this->endpoint->send($message);
         
-        return $response->isSuccess();
+        if ($response->isError()) {
+        	throw new \Exception($response->getErrorMessage(), $response->getErrorCode());
+        }
+        
+        if ($response->isRejected()) {
+        	throw new \Exception($response->getRejectReason());
+        }
+        
+        return $response->isSent();
     }
 
     /**
@@ -88,6 +96,14 @@ $example = new class {
         /** @var SendMessageResponse $response */
         $response = $this->endpoint->sendRaw($message);
 
-        return $response->isSuccess();
+	    if ($response->isError()) {
+		    throw new \Exception($response->getErrorMessage(), $response->getErrorCode());
+	    }
+
+	    if ($response->isRejected()) {
+		    throw new \Exception($response->getRejectReason());
+	    }
+
+	    return $response->isSent();
     }
 };

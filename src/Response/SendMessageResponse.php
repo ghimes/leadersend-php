@@ -11,14 +11,19 @@ class SendMessageResponse extends Response
     /**
      * @return bool
      */
-    public function isSuccess(): bool
+    public function isSent(): bool
     {
-        if (!parent::isSuccess()) {
-            return false;
-        }
-        
         $response = $this->getResponseData()[0] ?? [];
         return isset($response['status']) && $response['status'] === 'sent';
+    }
+
+	/**
+	 * @return bool
+	 */
+    public function isRejected(): bool 
+    {
+	    $response = $this->getResponseData()[0] ?? [];
+	    return isset($response['status']) && $response['status'] === 'rejected';
     }
     
     /**
